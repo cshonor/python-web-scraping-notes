@@ -16,7 +16,21 @@
 
 ### 1.3 文件上传
 
-使用 **`files=`** 参数（如 `{"upload": open(path, "rb")}`），或使用元组形式附带文件名与 MIME；优先 **`with open(...)`** 管理文件句柄。
+```python
+import io
+
+import requests
+
+url = "https://httpbin.org/post"
+buf = io.BytesIO(b"hello from crawler")
+buf.seek(0)
+r = requests.post(
+    url,
+    files={"file": ("note.txt", buf, "text/plain")},
+    timeout=30,
+)
+print(r.status_code, r.json().get("files"))
+```
 
 ### 1.4 Cookie 与 Session
 
