@@ -1,44 +1,77 @@
-# 第10章：穿越网页表单与登录窗口进行抓取
+# 第 10 章 穿越网页表单与登录窗口：学习笔记
 
-## 核心主题
-
-用 `requests.Session` 维护 Cookie，处理 POST、隐藏字段与登录态，必要时结合浏览器自动化。
+本章讲解如何用 **`requests`** 模拟提交表单、维持 **Cookie / Session**、上传文件，以及处理 **HTTP 基本认证**；并强调与**蜜罐字段**、**Network 面板**相关的工程习惯。
 
 ---
 
-## 10.1 Session 与 Cookie
+## 1. 核心知识点与原理
 
-### 核心概念
+### 1.1 Requests 库
 
-- **`requests.Session()`**：跨请求复用连接、自动携带服务端下发的 Cookie  
-- **登录后 Cookie**：后续 GET 需在**同一 Session** 上发起  
+相比 `urllib`，**`requests`** 对会话、Cookie、重定向、超时与编码的处理更直观，适合表单与 API 类交互。
 
-### 可运行代码示例
+### 1.2 提交表单（POST）
 
-`code/chapter10/session_post.py`（对 `httpbin.org` 等公开测试端点演示 POST）  
+表单多数以 **POST** 提交。关键是 **HTML 字段 `name`** 与 Python 侧 **`data={}` 字典键**一一对应（文件字段除外）。**注意**：若把表单字段放在 URL 查询串上，应使用 **`params`**；放在请求体里用 **`data`** 或 **`json`**。书中个别示例用 `post(..., params=...)` 模拟的是「类 GET 的登录接口」，真实站点多为 **`data=`**。
 
-### 新手易错点
+### 1.3 文件上传
 
-- 忘记在登录响应后检查是否返回错误页（状态码仍可能是 200）  
-- CSRF token 常在表单隐藏域，需先 GET 登录页再解析 token  
+使用 **`files=`** 参数（如 `{"upload": open(path, "rb")}`），或使用元组形式附带文件名与 MIME；优先 **`with open(...)`** 管理文件句柄。
+
+### 1.4 Cookie 与 Session
+
+- **Cookie**：服务端下发的会话标识；可手动从响应头复制到 **`headers["Cookie"]`**，但易过期、难维护。
+- **`requests.Session()`**：自动在后续请求中携带 Cookie，并复用连接，是登录流程的默认推荐。
+
+### 1.5 HTTP 基本认证
+
+对返回 **401** 且采用 **HTTP Basic** 的资源，使用：
+
+```python
+from requests.auth import HTTPBasicAuth
+requests.get(url, auth=HTTPBasicAuth("user", "pass"))
+```
 
 ---
 
-## 10.2 浏览器登录（衔接第 11 章）
+## 2. 代码示例：使用 Session 保持登录状态
 
-### 核心概念
+书中示例站点若改版或下线，请以 **Network 面板** 为准调整 URL 与字段名。
 
-- **OAuth / 验证码 / 复杂 JS 指纹**：纯 requests 难以复现时，用 Selenium/Playwright 完成登录后导出 Cookie 到 Session（注意合规）  
+可运行脚本：`code/chapter10/session_cookies_welcome.py`（含异常与 **HTTPS**；原书为 `http` + `params` 风格，脚本内附注释说明 **`data` vs `params`**）
+
+```python
+import requests
+
+session = requests.Session()
+params = {"username": "Ryan", "password": "password"}
+
+s = session.post(
+    "https://pythonscraping.com/pages/cookies/welcome.php",
+    params=params,
+    timeout=20,
+)
+print("Cookie:", session.cookies.get_dict())
+
+s = session.get("https://pythonscraping.com/pages/cookies/profile.php", timeout=20)
+print(s.text[:500])
+```
 
 ---
 
-## 本章小结
+## 3. 学习贴士
 
-- 表单抓取 = **解析字段名 + 维持会话 + 校验成功标志**  
-- 隐藏字段与 token 是「防 CSRF」机制，爬虫应**模拟真实浏览器行为**，而非绕过安全研究未授权系统  
+- **蜜罐字段**：提交前检查是否存在 **`display:none`** 或视觉上隐藏的输入框；不要随意填充，否则易被反爬策略标记。
+- **分析网络流量**：复杂登录（多步跳转、CSRF、`_token`）务必用浏览器 **Network** 对照**真实 POST** 的 URL、方法与表单字段；必要时先 **GET 登录页**解析隐藏域再 POST。
 
-## 本章练习题
+---
 
-1. 用 Session 对 `https://httpbin.org/cookies/set?k=v` 再访问 `/cookies` 验证 Cookie  
-2. 找一页公开测试表单（或自建 Flask 表单），用 POST 提交并打印响应片段  
-3. 画流程图：从打开登录页到带 Cookie 访问受保护页的请求顺序  
+## 4. 与本仓库其他示例
+
+`code/chapter10/session_post.py`：对 **httpbin.org** 的 **`data=`** POST 演示。
+
+## 练习建议
+
+1. 将书中登录改为 **`data={"username":..., "password":...}`**（若接口支持），对比与 `params` 的差异。  
+2. 用 **`httpbin.org/basic-auth/user/pass`** 练习 **`HTTPBasicAuth`**。  
+3. 用 Session 完成：**GET 登录页 → 解析 CSRF → POST 登录 → GET 受保护页** 的伪代码（无需真攻真实账户）。
