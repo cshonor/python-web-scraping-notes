@@ -16,3 +16,8 @@ code/chapter13/*.png
 
 # Playwright
 .playwright/
+
+# Scrapy 第5章导出
+code/chapter05/wikiSpider/*.json
+code/chapter05/wikiSpider/*.csv
+code/chapter05/wikiSpider/*.jl

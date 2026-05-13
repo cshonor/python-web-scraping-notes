@@ -1,16 +1,33 @@
-# 第5章配套：Scrapy 项目骨架说明
+# 第 5 章配套：Scrapy
 
-Scrapy 需要项目目录结构，不能单文件直接 `python spider.py` 运行整站流程。
+## 维基 `CrawlSpider` 完整示例
 
-## 创建项目
+本目录下 **`wikiSpider/`** 为可运行最小项目（与 `chapter-05.md` 对应）。
 
 ```bash
 pip install scrapy
+cd wikiSpider
+scrapy crawl articles
+```
+
+可选导出：
+
+```bash
+scrapy crawl articles -o sample.json
+```
+
+`wikiSpider/settings.py` 中已开启 **`ROBOTSTXT_OBEY`**、**限速**、**`CLOSESPIDER_PAGECOUNT`**（演示用自动停）。请将 **`USER_AGENT`** 中的联系信息改为你可收信地址（维基 [User-Agent 政策](https://meta.wikimedia.org/wiki/User-Agent_policy)）。
+
+---
+
+## 从零创建项目（备忘）
+
+```bash
 scrapy startproject demo_scrapy
 cd demo_scrapy
 ```
 
-在 `demo_scrapy/spiders/example.py` 中新建 Spider，例如：
+最简 `scrapy.Spider`：
 
 ```python
 import scrapy
@@ -23,15 +40,6 @@ class ExampleSpider(scrapy.Spider):
         yield {"title": response.css("title::text").get()}
 ```
 
-运行：
-
 ```bash
 scrapy crawl example
 ```
-
-建议先在 `demo_scrapy/settings.py` 中设置：
-
-- `ROBOTSTXT_OBEY = True`
-- `DOWNLOAD_DELAY = 1`
-
-详见 `chapter-05.md`。
