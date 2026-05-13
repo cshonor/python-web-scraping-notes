@@ -10,6 +10,7 @@ __pycache__/
 code/chapter06/*.csv
 code/chapter06/*.jsonl
 code/chapter06/*.db
+code/chapter06/_demo_*
 
 # 第13章 Pillow 输出
 code/chapter13/*.png
