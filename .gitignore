@@ -1,0 +1,18 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# 第6章示例运行产物
+code/chapter06/*.csv
+code/chapter06/*.jsonl
+code/chapter06/*.db
+
+# 第13章 Pillow 输出
+code/chapter13/*.png
+
+# Playwright
+.playwright/
