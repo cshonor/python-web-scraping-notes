@@ -13,11 +13,13 @@ CONCURRENT_REQUESTS = 4
 DOWNLOAD_DELAY = 1.0
 CONCURRENT_REQUESTS_PER_DOMAIN = 2
 
-LOG_LEVEL = "INFO"
+# 默认较安静；调试时可改为 INFO / DEBUG
+LOG_LEVEL = "WARNING"
 
 # 演示用：抓取若干页后自动停止，避免长时间占用维基带宽
 CLOSESPIDER_PAGECOUNT = 30
 
 ITEM_PIPELINES = {
+    "wikiSpider.pipelines.LastUpdatedParsePipeline": 200,
     "wikiSpider.pipelines.WikiSpiderPipeline": 300,
 }
