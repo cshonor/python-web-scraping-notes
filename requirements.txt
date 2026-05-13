@@ -17,4 +17,5 @@ playwright>=1.40.0
 # pdfminer.six>=20221105  # 第7章 PDFMiner 系抽取
 # python-docx>=1.0.0      # 第7章
 # pytesseract>=0.3.10   # 第13章 OCR（另需系统安装 Tesseract）
+# numpy>=1.26.0         # 第13章 图像数组运算（可选）
 # aiohttp>=3.9.0          # 第16章扩展
