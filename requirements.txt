@@ -6,6 +6,7 @@ Pillow>=10.0.0
 
 # 动态页（第11章、advanced/）
 playwright>=1.40.0
+# selenium>=4.15.0        # 第11章 Selenium 示例（可选）
 
 # 按需安装（见各章笔记）
 # scrapy>=2.11.0          # 第5章
