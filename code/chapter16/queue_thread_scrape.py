@@ -7,8 +7,8 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 URLS = [
-    "https://example.com",
-    "https://example.org",
+    "https://example.com/",
+    "https://example.com/?v=demo2",
 ]
 
 

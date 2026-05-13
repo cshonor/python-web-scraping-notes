@@ -55,7 +55,7 @@ def main() -> None:
     q: Queue[str | None] = Queue()
     consumer = threading.Thread(target=storage, args=(q,))
     consumer.start()
-    urls = ["https://example.com", "https://example.org"]
+    urls = ["https://example.com/", "https://example.com/?v=demo2"]
     workers = [threading.Thread(target=scrape, args=(u, q)) for u in urls]
     for w in workers:
         w.start()
