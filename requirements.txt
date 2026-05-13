@@ -4,7 +4,7 @@ beautifulsoup4>=4.12.0
 lxml>=5.0.0
 Pillow>=10.0.0
 
-# 动态页（第11章、advanced/）
+# 动态页（第11章）
 playwright>=1.40.0
 # selenium>=4.15.0        # 第11章 Selenium 示例（可选）
 

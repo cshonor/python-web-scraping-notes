@@ -7,19 +7,19 @@ __pycache__/
 .ruff_cache/
 
 # 第6章示例运行产物
-code/chapter06/*.csv
-code/chapter06/*.jsonl
-code/chapter06/*.db
-code/chapter06/_demo_*
+chapter-06/*.csv
+chapter-06/*.jsonl
+chapter-06/*.db
+chapter-06/_demo_*
 
-# 第13章 Pillow 输出
-code/chapter13/*.png
-code/chapter13/_ocr_*
+# 第13章 Pillow / OCR 输出
+chapter-13/*.png
+chapter-13/_ocr_*
 
 # Playwright
 .playwright/
 
 # Scrapy 第5章导出
-code/chapter05/wikiSpider/*.json
-code/chapter05/wikiSpider/*.csv
-code/chapter05/wikiSpider/*.jl
+chapter-05/wikiSpider/*.json
+chapter-05/wikiSpider/*.csv
+chapter-05/wikiSpider/*.jl

@@ -1,63 +1,58 @@
-# Python 网络爬虫权威指南（第2版）· 学习笔记
+# Python 网络爬虫权威指南（第2版）· 学习笔记仓库
 
-本仓库按原书章节拆成 **GitHub 风格 Markdown 笔记**（`chapter-01.md` … `chapter-18.md`），每章独立成篇，便于上传、复习与迭代。配套示例在 `code/chapterXX/`。
+本仓库按 **18 个章节目录**组织：每章一个文件夹 **`chapter-01`** … **`chapter-18`**，内含：
 
-> 说明：笔记为**纲要式整理与示例代码**，与 Ryan Mitchell 原著配合阅读；请遵守站点条款与法律法规。
+- **`README.md`**：该章学习笔记（GitHub 默认展示）  
+- **`.py` 等代码**：与该章配套的示例脚本（在同一文件夹内运行或按章内说明执行）
+
+> 说明：笔记为纲要式整理与示例代码，与 Ryan Mitchell 原著配合阅读；请遵守站点条款与法律法规。
 
 ---
 
 ## 全书目录
 
-| 章 | 文件 | 主题 |
+| 章 | 目录 | 主题 |
 |----|------|------|
-| 第1章 | [chapter-01.md](chapter-01.md) | 初见网络爬虫 |
-| 第2章 | [chapter-02.md](chapter-02.md) | 复杂 HTML 解析 |
-| 第3章 | [chapter-03.md](chapter-03.md) | 编写网络爬虫 |
-| 第4章 | [chapter-04.md](chapter-04.md) | 网络爬虫模型 |
-| 第5章 | [chapter-05.md](chapter-05.md) | Scrapy |
-| 第6章 | [chapter-06.md](chapter-06.md) | 存储数据 |
-| 第7章 | [chapter-07.md](chapter-07.md) | 读取文档 |
-| 第8章 | [chapter-08.md](chapter-08.md) | 数据清洗 |
-| 第9章 | [chapter-09.md](chapter-09.md) | 自然语言处理 |
-| 第10章 | [chapter-10.md](chapter-10.md) | 穿越网页表单与登录窗口进行抓取 |
-| 第11章 | [chapter-11.md](chapter-11.md) | 抓取 JavaScript |
-| 第12章 | [chapter-12.md](chapter-12.md) | 利用 API 抓取数据 |
-| 第13章 | [chapter-13.md](chapter-13.md) | 图像识别与文字处理 |
-| 第14章 | [chapter-14.md](chapter-14.md) | 避开抓取陷阱 |
-| 第15章 | [chapter-15.md](chapter-15.md) | 用爬虫测试网站 |
-| 第16章 | [chapter-16.md](chapter-16.md) | 并行网页抓取 |
-| 第17章 | [chapter-17.md](chapter-17.md) | 远程抓取 |
-| 第18章 | [chapter-18.md](chapter-18.md) | 网页抓取的法律与道德约束 |
+| 第1章 | [chapter-01/](chapter-01/) | 初见网络爬虫 |
+| 第2章 | [chapter-02/](chapter-02/) | 复杂 HTML 解析 |
+| 第3章 | [chapter-03/](chapter-03/) | 编写网络爬虫 |
+| 第4章 | [chapter-04/](chapter-04/) | 网络爬虫模型 |
+| 第5章 | [chapter-05/](chapter-05/) | Scrapy（含 `wikiSpider/` 子项目） |
+| 第6章 | [chapter-06/](chapter-06/) | 存储数据 |
+| 第7章 | [chapter-07/](chapter-07/) | 读取文档 |
+| 第8章 | [chapter-08/](chapter-08/) | 数据清洗 |
+| 第9章 | [chapter-09/](chapter-09/) | 自然语言处理 |
+| 第10章 | [chapter-10/](chapter-10/) | 表单与登录 |
+| 第11章 | [chapter-11/](chapter-11/) | 抓取 JavaScript |
+| 第12章 | [chapter-12/](chapter-12/) | 利用 API |
+| 第13章 | [chapter-13/](chapter-13/) | 图像与 OCR |
+| 第14章 | [chapter-14/](chapter-14/) | 避开抓取陷阱 |
+| 第15章 | [chapter-15/](chapter-15/) | 用爬虫测试网站 |
+| 第16章 | [chapter-16/](chapter-16/) | 并行抓取 |
+| 第17章 | [chapter-17/](chapter-17/) | 远程抓取 |
+| 第18章 | [chapter-18/](chapter-18/) | 法律与道德约束 |
 
 ---
 
-## 环境与依赖
+## 环境
+
+建议使用 Python 3.10+：
 
 ```bash
 python -m venv .venv
-.venv\Scripts\activate   # Windows
+.venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-部分章节依赖可选包（如 Scrapy、NLTK、Selenium），见各章「依赖」小节或 `requirements.txt` 注释。
+各章依赖不同（如 Scrapy、Selenium、NLTK），以各章 `README.md` 与 `requirements.txt` 注释为准。
 
 ---
 
-## 补充材料（原仓库结构）
+## 运行 Scrapy 维基示例（第 5 章）
 
-| 路径 | 说明 |
-|------|------|
-| [basic/](basic/) | `requests` + BeautifulSoup 短文与 demo |
-| [advanced/](advanced/) | 动态页与 Playwright 示例 |
-| [reverse-engineering/](reverse-engineering/) | 接口与调试思路笔记 |
+在仓库根目录：
 
----
-
-## 代码示例索引
-
+```bash
+cd chapter-05/wikiSpider
+scrapy crawl articles
 ```
-code/
-├── chapter01/   … chapter18/
-```
-
-每章笔记末尾会指向对应 `code/chapterXX/` 下的脚本文件名。
