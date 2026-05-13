@@ -6,6 +6,9 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 
+# 第4章 crawler_model.save_to_txt 示例输出
+chapter-04/*.txt
+
 # 第6章示例运行产物
 chapter-06/*.csv
 chapter-06/*.jsonl
