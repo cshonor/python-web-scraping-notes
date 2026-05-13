@@ -19,3 +19,4 @@ playwright>=1.40.0
 # pytesseract>=0.3.10   # 第13章 OCR（另需系统安装 Tesseract）
 # numpy>=1.26.0         # 第13章 图像数组运算（可选）
 # aiohttp>=3.9.0          # 第16章扩展
+# PySocks>=1.7.1        # 第17章 Tor SOCKS（requests 代理）
