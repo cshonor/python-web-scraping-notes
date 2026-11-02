@@ -71,8 +71,19 @@ if __name__ == "__main__":
 
 ---
 
-## 4. 练习建议
+## 4. 与本仓库其他示例
 
-1. 把拖放断言改为**截图文件存在**且大小大于某阈值。  
-2. 用 **`unittest.mock`** 模拟 `requests.get`，对解析函数做单测（无需浏览器）。  
+| 文件 | 说明 |
+|---|---|
+| `selenium_drag_unittest.py` | 本章主示例：`unittest` + Selenium 拖放，含显式等待与断言 |
+| `link_checker.py` | 同域链接巡检：并发探测 + 限速 + 状态码汇总，不依赖浏览器 |
+
+本章依赖见同目录 `requirements.txt`（`selenium` 需本机 Chrome；`link_checker.py` 只需 `requests`）。
+
+---
+
+## 练习建议
+
+1. 把拖放断言改为**截图文件存在**且大小大于某阈值。
+2. 用 **`unittest.mock`** 模拟 `requests.get`，对解析函数做单测（无需浏览器）。
 3. 为登录流程写一个 **`setUpClass` 登录一次、多个用例复用 Session** 的草图（注意 Cookie 过期）。
