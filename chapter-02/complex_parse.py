@@ -13,6 +13,13 @@ URLS = (
     "http://www.pythonscraping.com/pages/page3.html",
 )
 
+# 书中「红/绿人物名」的示例页是 warandpeace.html，不是 page3.html。
+# 早期版本在 page3.html 上找 span.green，必然为空（该页没有这个 class）。
+WAR_URLS = (
+    "https://www.pythonscraping.com/pages/warandpeace.html",
+    "http://www.pythonscraping.com/pages/warandpeace.html",
+)
+
 
 def get_soup(url: str) -> BeautifulSoup | None:
     """安全获取 BeautifulSoup 对象。"""
@@ -28,21 +35,30 @@ def get_soup(url: str) -> BeautifulSoup | None:
     return BeautifulSoup(html.read(), "html.parser")
 
 
+def first_soup(urls: tuple[str, ...]) -> BeautifulSoup | None:
+    """按顺序尝试多个 URL，返回第一个拿到的 soup。"""
+    for url in urls:
+        soup = get_soup(url)
+        if soup is not None:
+            return soup
+    return None
+
+
 def main() -> int:
-    bs = None
-    for url in URLS:
-        bs = get_soup(url)
-        if bs is not None:
-            break
+    bs = first_soup(URLS)
     if bs is None:
         return 1
 
-    print("===== 1. 所有绿色人物名称 =====")
-    names = bs.find_all("span", class_="green")
-    if not names:
-        print("(未找到 span.green，页面结构可能已变)")
-    for name in names:
-        print(name.get_text(strip=True))
+    print("===== 1. 所有绿色人物名称（warandpeace.html） =====")
+    war = first_soup(WAR_URLS)
+    if war is None:
+        print("(warandpeace.html 访问失败，跳过)")
+    else:
+        names = war.find_all("span", class_="green")
+        if not names:
+            print("(未找到 span.green，页面结构可能已变)")
+        for name in names:
+            print(name.get_text(strip=True))
 
     print("\n===== 2. 产品表格数据 =====")
     table = bs.find("table", id="giftList")

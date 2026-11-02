@@ -144,10 +144,13 @@ if __name__ == "__main__":
     )
 
     # 线上稳定页：example.com
+    # 注意 title_selector 用了逗号选择器 "h1, title"：
+    # IANA 早年的 example.com 有 <h1>Example Domain</h1>，后来简化成只有 <title>。
+    # 逗号 = CSS 选择器组，按文档顺序取第一个命中项，正是「改版时用配置兜住」的写法。
     example = Website(
         name="Example",
         url="https://example.com/",
-        title_selector="h1",
+        title_selector="h1, title",
         body_selector="p",
     )
     result = crawler.parse(example, "https://example.com/")
