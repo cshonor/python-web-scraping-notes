@@ -1,0 +1,11 @@
+# 第 7 章 读取文档 —— 本章依赖
+#
+# 安装：cd chapter-07 && pip install -r requirements.txt
+# 只想读代码不跑脚本，可以不装。
+
+beautifulsoup4>=4.12.0
+pypdf>=4.0.0
+pdfminer.six>=20221105
+
+# 可选：用面向对象方式读 .docx（本仓示例走 zipfile + bs4，不需要它）
+# python-docx>=1.0.0

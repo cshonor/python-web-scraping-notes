@@ -1,0 +1,9 @@
+# 第 9 章 自然语言处理 —— 本章依赖
+#
+# 安装：cd chapter-09 && pip install -r requirements.txt
+# 只想读代码不跑脚本，可以不装。
+#
+# 补充说明：
+# 首次运行需下载语料：python3 -c "import nltk; nltk.download('punkt'); nltk.download('averaged_perceptron_tagger')"
+
+nltk>=3.8.0

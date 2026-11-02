@@ -1,0 +1,6 @@
+# 第 3 章 编写网络爬虫 —— 本章依赖
+#
+# 安装：cd chapter-03 && pip install -r requirements.txt
+# 只想读代码不跑脚本，可以不装。
+
+beautifulsoup4>=4.12.0

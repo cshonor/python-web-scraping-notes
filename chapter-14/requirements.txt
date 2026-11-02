@@ -1,0 +1,10 @@
+# 第 14 章 避开抓取陷阱 —— 本章依赖
+#
+# 安装：cd chapter-14 && pip install -r requirements.txt
+# 只想读代码不跑脚本，可以不装。
+#
+# 补充说明：
+# Selenium 示例需本机 Chrome
+
+requests>=2.31.0
+selenium>=4.15.0

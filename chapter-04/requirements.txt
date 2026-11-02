@@ -1,0 +1,7 @@
+# 第 4 章 网络爬虫模型 —— 本章依赖
+#
+# 安装：cd chapter-04 && pip install -r requirements.txt
+# 只想读代码不跑脚本，可以不装。
+
+requests>=2.31.0
+beautifulsoup4>=4.12.0

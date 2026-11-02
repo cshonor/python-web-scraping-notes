@@ -1,0 +1,6 @@
+# 第 12 章 利用 API —— 本章依赖
+#
+# 安装：cd chapter-12 && pip install -r requirements.txt
+# 只想读代码不跑脚本，可以不装。
+
+requests>=2.31.0

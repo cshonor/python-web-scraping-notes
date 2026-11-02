@@ -1,0 +1,12 @@
+# 第 17 章 远程抓取 —— 本章依赖
+#
+# 安装：cd chapter-17 && pip install -r requirements.txt
+# 只想读代码不跑脚本，可以不装。
+#
+# 补充说明：
+# 示例走 Tor 的 SOCKS5 127.0.0.1:9050，需本机已运行 Tor；
+# 未启动 Tor 时脚本会连接被拒，属预期行为
+
+requests>=2.31.0
+PySocks>=1.7.1
+selenium>=4.15.0

@@ -1,0 +1,11 @@
+# 第 6 章 存储数据 —— 本章依赖
+#
+# 安装：cd chapter-06 && pip install -r requirements.txt
+# 只想读代码不跑脚本，可以不装。
+#
+# 补充说明：
+# mysql_pages_demo.py 需要本机或远程 MySQL 服务；
+# sqlite_store.py / save_csv_json.py / wikitable_to_csv.py 只用标准库
+
+beautifulsoup4>=4.12.0
+PyMySQL>=1.1.0

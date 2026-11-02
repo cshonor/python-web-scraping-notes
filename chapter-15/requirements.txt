@@ -1,0 +1,11 @@
+# 第 15 章 用爬虫测试网站 —— 本章依赖
+#
+# 安装：cd chapter-15 && pip install -r requirements.txt
+# 只想读代码不跑脚本，可以不装。
+#
+# 补充说明：
+# Selenium 拖放示例需本机 Chrome；unittest 用例可直接 python3 -m unittest 跑
+
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+selenium>=4.15.0

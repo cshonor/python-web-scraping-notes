@@ -1,0 +1,9 @@
+# 第 2 章 复杂 HTML 解析 —— 本章依赖
+#
+# 安装：cd chapter-02 && pip install -r requirements.txt
+# 只想读代码不跑脚本，可以不装。
+
+beautifulsoup4>=4.12.0
+
+# 可选解析器：complex_parse.py 默认 html.parser，改 lxml 需安装
+# lxml>=5.0.0

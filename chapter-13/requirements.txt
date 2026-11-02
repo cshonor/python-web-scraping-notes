@@ -1,0 +1,13 @@
+# 第 13 章 图像与 OCR —— 本章依赖
+#
+# 安装：cd chapter-13 && pip install -r requirements.txt
+# 只想读代码不跑脚本，可以不装。
+#
+# 补充说明：
+# pytesseract 只是 wrapper，必须另装系统级 Tesseract 可执行文件：
+#   macOS  brew install tesseract
+#   Debian/Ubuntu  sudo apt install tesseract-ocr
+# 脚本检测不到时会打印安装提示，不会直接抛栈
+
+Pillow>=10.0.0
+pytesseract>=0.3.10

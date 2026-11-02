@@ -1,22 +1,44 @@
-# 核心（第1–4、10、12、14–16 章示例）
+# 全量依赖（18 章所有示例都会跑通）
+#
+# 优先用「按章安装」：cd chapter-NN && pip install -r requirements.txt
+# 本文件只给「想一次性装全、跑遍全书」的场景用。
+#
+# 装完还有两步系统级准备（pip 装不出来的）：
+#   1. Playwright 浏览器：python3 -m playwright install chromium
+#   2. Tesseract 引擎：   macOS  brew install tesseract
+#                        Debian/Ubuntu  sudo apt install tesseract-ocr
+#
+# Selenium 需本机 Chrome；第 17 章需本机 Tor 监听 127.0.0.1:9050；
+# 第 6 章 MySQL 示例需一个可连的 MySQL 实例。
+
+# --- 第 1–4、6、10、12、14–17 章：请求与解析 ---
 requests>=2.31.0
 beautifulsoup4>=4.12.0
 lxml>=5.0.0
-Pillow>=10.0.0
 
-# 动态页（第11章）
+# --- 第 5 章：框架 ---
+scrapy>=2.11.0
+
+# --- 第 6 章：数据库 ---
+PyMySQL>=1.1.0
+
+# --- 第 7 章：文档抽取 ---
+pypdf>=4.0.0
+pdfminer.six>=20221105
+
+# --- 第 8 章：数据处理 ---
+pandas>=2.0.0
+
+# --- 第 9 章：NLP（首次运行还需 nltk.download 语料）---
+nltk>=3.8.0
+
+# --- 第 11、14、15、17 章：浏览器自动化 ---
+selenium>=4.15.0
 playwright>=1.40.0
-# selenium>=4.15.0        # 第11章 Selenium 示例（可选）
 
-# 按需安装（见各章笔记）
-# scrapy>=2.11.0          # 第5章
-# pandas>=2.0.0           # 第8章
-# nltk>=3.8.0             # 第9章
-# pymysql>=1.1.0        # 第6章 MySQL
-# pypdf>=4.0.0            # 第7章 本地 PDF
-# pdfminer.six>=20221105  # 第7章 PDFMiner 系抽取
-# python-docx>=1.0.0      # 第7章
-# pytesseract>=0.3.10   # 第13章 OCR（另需系统安装 Tesseract）
-# numpy>=1.26.0         # 第13章 图像数组运算（可选）
-# aiohttp>=3.9.0          # 第16章扩展
-# PySocks>=1.7.1        # 第17章 Tor SOCKS（requests 代理）
+# --- 第 13 章：图像与 OCR ---
+Pillow>=10.0.0
+pytesseract>=0.3.10
+
+# --- 第 17 章：SOCKS 代理 ---
+PySocks>=1.7.1

@@ -1,0 +1,14 @@
+# 第 1 章 初见网络爬虫 —— 本章依赖
+#
+# 安装：cd chapter-01 && pip install -r requirements.txt
+# 只想读代码不跑脚本，可以不装。
+#
+# 补充说明：
+# 仅 get_example.py / bs4_example.py / safe_get.py 需要 requests；
+# bs4 系列脚本纯标准库 urllib + beautifulsoup4 即可
+
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+
+# 可选解析器：换成 BeautifulSoup(html, "lxml") 时再装
+# lxml>=5.0.0

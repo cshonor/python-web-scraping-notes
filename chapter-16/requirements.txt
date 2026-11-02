@@ -1,0 +1,6 @@
+# 第 16 章 并行抓取 —— 本章依赖
+#
+# 安装：cd chapter-16 && pip install -r requirements.txt
+# 只想读代码不跑脚本，可以不装。
+
+requests>=2.31.0

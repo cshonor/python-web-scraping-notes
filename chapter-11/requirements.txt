@@ -1,0 +1,11 @@
+# 第 11 章 抓取 JavaScript —— 本章依赖
+#
+# 安装：cd chapter-11 && pip install -r requirements.txt
+# 只想读代码不跑脚本，可以不装。
+#
+# 补充说明：
+# Selenium 需本机已安装 Chrome（4.6+ 自带 Selenium Manager 自动配驱动）；
+# Playwright 装完还要拉浏览器：python3 -m playwright install chromium
+
+selenium>=4.15.0
+playwright>=1.40.0

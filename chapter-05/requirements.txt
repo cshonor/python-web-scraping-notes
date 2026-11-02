@@ -1,0 +1,9 @@
+# 第 5 章 Scrapy 框架 —— 本章依赖
+#
+# 安装：cd chapter-05 && pip install -r requirements.txt
+# 只想读代码不跑脚本，可以不装。
+#
+# 补充说明：
+# 安装后可执行 scrapy 命令；运行需 cd 到 wikiSpider/（含 scrapy.cfg 的那层）
+
+scrapy>=2.11.0
